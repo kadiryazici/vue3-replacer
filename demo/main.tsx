@@ -84,7 +84,7 @@ const App = defineComponent({
                handlers={[
                   {
                      name: 'brackets',
-                     execute: (text) => text.slice(0, 1) === '[' && text.slice(-1) === ']',
+                     execute: (text) => text.slice(0, 1) === '(' && text.slice(-1) === ')',
                   },
                ]}
                v-slots={{ url, mention, hashtag, brackets }}
