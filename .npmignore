@@ -1,0 +1,11 @@
+src
+demo
+dist-demo
+.prettierrc
+.tsconfig.json
+.github
+.gitignore
+vite.config.ts
+.eslintrc.js
+node_modules
+.vscode

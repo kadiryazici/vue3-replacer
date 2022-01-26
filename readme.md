@@ -1,0 +1,1 @@
+A text replacer component for Vue 3 (WIP)
