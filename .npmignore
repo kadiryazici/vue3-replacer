@@ -9,3 +9,4 @@ vite.config.ts
 .eslintrc.js
 node_modules
 .vscode
+pnpm-lock.yaml

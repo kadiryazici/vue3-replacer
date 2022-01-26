@@ -1,6 +1,6 @@
 {
    "name": "vue3-replacer",
-   "version": "0.0.1",
+   "version": "0.0.2",
    "main": "./dist/vue3-replacer.umd.js",
    "module": "./dist/vue3-replacer.es.js",
    "types": "./dist/src/lib.d.ts",
@@ -23,5 +23,18 @@
    },
    "peerDependencies": {
       "vue": "^3.2.29"
-   }
+   },
+   "repository": {
+      "url": "git+https://github.com/kadiryazici/vue3-replacer.git",
+      "type": "git"
+    },
+    "bugs": {
+      "url": "https://github.com/kadiryazici/vue3-replacer/issues"
+    },
+    "homepage": "https://github.com/kadiryazici/vue3-replacer#readme",
+    "keywords": [
+      "vue 3",
+      "text",
+      "replacer"
+    ]
 }
