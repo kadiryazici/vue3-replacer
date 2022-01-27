@@ -24,6 +24,7 @@ const config = {
       'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
       'react/no-unstable-nested-components': 'off',
+      'react-hooks/rules-of-hooks': 'off',
    },
    overrides: [
       {

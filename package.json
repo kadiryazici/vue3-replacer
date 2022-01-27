@@ -1,9 +1,13 @@
 {
    "name": "vue3-replacer",
-   "version": "0.0.2",
+   "version": "0.0.5",
    "main": "./dist/vue3-replacer.umd.js",
    "module": "./dist/vue3-replacer.es.js",
    "types": "./dist/src/lib.d.ts",
+   "files": [
+      "/dist",
+      "readme.md"
+   ],
    "scripts": {
       "dev": "cross-env MODE=demo vite",
       "build": "cross-env MODE=production vite build"
@@ -27,14 +31,14 @@
    "repository": {
       "url": "git+https://github.com/kadiryazici/vue3-replacer.git",
       "type": "git"
-    },
-    "bugs": {
+   },
+   "bugs": {
       "url": "https://github.com/kadiryazici/vue3-replacer/issues"
-    },
-    "homepage": "https://github.com/kadiryazici/vue3-replacer#readme",
-    "keywords": [
+   },
+   "homepage": "https://github.com/kadiryazici/vue3-replacer#readme",
+   "keywords": [
       "vue 3",
       "text",
       "replacer"
-    ]
+   ]
 }
