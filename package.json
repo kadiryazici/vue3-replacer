@@ -1,6 +1,6 @@
 {
    "name": "vue3-replacer",
-   "version": "0.0.5",
+   "version": "0.1.0",
    "main": "./dist/vue3-replacer.umd.js",
    "module": "./dist/vue3-replacer.es.js",
    "types": "./dist/src/lib.d.ts",

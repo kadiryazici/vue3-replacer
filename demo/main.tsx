@@ -1,7 +1,7 @@
 import { createApp, defineComponent } from 'vue';
 
 import styled from 'vue3-styled-components';
-import { Replacer } from '../src/lib';
+import { Handler, Replacer } from '../src/lib';
 
 const sampleText =
    'Hello (bruh moment) this is reguler text `with block` with @mention and #hashtag but can also contain https://links.com';
@@ -44,6 +44,41 @@ const Brackets = styled.span`
    padding: 2px;
 `;
 
+const addCharacterToLastElement = (array: string[], character: string) => {
+   if (typeof array[array.length - 1] === 'string') {
+      // eslint-disable-next-line no-param-reassign
+      array[array.length - 1] += character;
+      return;
+   }
+
+   array.push(character);
+};
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const bracketsSplitter = (text: string) => {
+   const splittedFromBrackets = [...text].reduce((acc, character) => {
+      if (character === '(') {
+         acc.push('(');
+      } else if (character === ')') {
+         addCharacterToLastElement(acc, ')');
+         acc.push('');
+      } else {
+         addCharacterToLastElement(acc, character);
+      }
+
+      return acc;
+   }, [] as string[]);
+
+   return splittedFromBrackets.filter(Boolean);
+};
+
+const customHandlers: Handler[] = [
+   {
+      name: 'brackets',
+      check: (text) => text.startsWith('(') && text.endsWith(')'),
+   },
+];
+
 const url = (text: string) => <Link href={text}>{text}</Link>;
 const mention = (text: string) => <Mention>{text}</Mention>;
 const hashtag = (text: string) => <Hashtag>{text}</Hashtag>;
@@ -54,39 +89,8 @@ const App = defineComponent({
       return (
          <div>
             <Replacer
-               splitter={(text) => {
-                  const texts = [];
-
-                  const modifyLast = (character: string) => {
-                     const lastIndex = texts.length - 1;
-                     const lastEl = texts[lastIndex];
-                     if (typeof lastEl === 'string') {
-                        texts[lastIndex] += character;
-                     } else {
-                        texts.push(character);
-                     }
-                  };
-
-                  [...text].forEach((character) => {
-                     if (character === '(') {
-                        texts.push('(');
-                        return;
-                     }
-                     if (character === ')') {
-                        modifyLast(')');
-                        texts.push('');
-                        return;
-                     }
-                     modifyLast(character);
-                  });
-                  return texts;
-               }}
-               handlers={[
-                  {
-                     name: 'brackets',
-                     execute: (text) => text.slice(0, 1) === '(' && text.slice(-1) === ')',
-                  },
-               ]}
+               // splitter={bracesSplitter}
+               customHandlers={customHandlers}
                v-slots={{ url, mention, hashtag, brackets }}
                text={sampleText}
             />

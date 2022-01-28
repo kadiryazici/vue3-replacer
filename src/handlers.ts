@@ -4,20 +4,20 @@ import { MatchType } from './matchType';
 
 export type Handler = {
    name: string;
-   execute: (text: string) => boolean;
+   check: (text: string) => boolean;
 };
 
 export const handlers: Handler[] = [
    {
       name: MatchType.Mention,
-      execute: (text) => regexMention.test(text),
+      check: (text) => regexMention.test(text),
    },
    {
       name: MatchType.URL,
-      execute: (text) => regexURL.test(text),
+      check: (text) => regexURL.test(text),
    },
    {
       name: MatchType.Hashtag,
-      execute: (text) => regexHashtag.test(text),
+      check: (text) => regexHashtag.test(text),
    },
 ];

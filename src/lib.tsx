@@ -12,7 +12,7 @@ export const Replacer = defineComponent({
          type: String as PropType<string>,
          required: true,
       },
-      handlers: {
+      customHandlers: {
          type: Array as PropType<Handler[]>,
          default: () => [],
       },
@@ -26,7 +26,7 @@ export const Replacer = defineComponent({
 
       // Merge default handlers with given ones. Always keep last handler by name, remove duplicates.
       const mergedHandlers = computed(() => {
-         const allHandlers = [...handlers, ...props.handlers];
+         const allHandlers = [...handlers, ...props.customHandlers];
 
          return allHandlers.filter((handler, index) => {
             const lastIndexOfHandlerByName = allHandlers.map(({ name }) => handler.name === name).lastIndexOf(true);
@@ -44,7 +44,7 @@ export const Replacer = defineComponent({
                index += 1
             ) {
                const handler = mergedHandlers.value[index];
-               const didMatch = handler.execute(text);
+               const didMatch = handler.check(text);
                if (didMatch) {
                   match = handler.name;
                   // don't care about other matches when you find one. Queue matters dude.
